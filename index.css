@@ -1,0 +1,24 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+#map {
+    height: 100vh;
+    background-color: grey;
+}
+
+#city-input {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    padding: 10px;
+    text-overflow: ellipsis;
+    text-align: center;
+    width: 400px;
+}
