@@ -1,0 +1,122 @@
+{
+    "city": {
+        "id": 675810,
+        "name": "Iasi",
+        "coord": {
+            "lon": 27.6,
+            "lat": 47.1667
+        },
+        "country": "RO",
+        "population": 318012
+    },
+    "cod": "200",
+    "message": 0.6059432,
+    "cnt": 5,
+    "list": [{
+        "dt": 1527156000,
+        "temp": {
+            "day": 26,
+            "min": 18.9,
+            "max": 26.93,
+            "night": 18.9,
+            "eve": 26.69,
+            "morn": 26
+        },
+        "pressure": 1016.68,
+        "humidity": 53,
+        "weather": [{
+            "id": 800,
+            "main": "Clear",
+            "description": "sky is clear",
+            "icon": "01d"
+        }],
+        "speed": 2.11,
+        "deg": 43,
+        "clouds": 0
+    }, {
+        "dt": 1527242400,
+        "temp": {
+            "day": 26.27,
+            "min": 15.48,
+            "max": 26.78,
+            "night": 22.46,
+            "eve": 26.06,
+            "morn": 15.48
+        },
+        "pressure": 1016.36,
+        "humidity": 59,
+        "weather": [{
+            "id": 800,
+            "main": "Clear",
+            "description": "sky is clear",
+            "icon": "02d"
+        }],
+        "speed": 2.63,
+        "deg": 20,
+        "clouds": 8
+    }, {
+        "dt": 1527328800,
+        "temp": {
+            "day": 24.24,
+            "min": 17.26,
+            "max": 25.33,
+            "night": 19.09,
+            "eve": 25.01,
+            "morn": 17.26
+        },
+        "pressure": 1020.8,
+        "humidity": 60,
+        "weather": [{
+            "id": 800,
+            "main": "Clear",
+            "description": "sky is clear",
+            "icon": "01d"
+        }],
+        "speed": 4.56,
+        "deg": 31,
+        "clouds": 0
+    }, {
+        "dt": 1527415200,
+        "temp": {
+            "day": 23.56,
+            "min": 13.91,
+            "max": 25.51,
+            "night": 19.58,
+            "eve": 24.77,
+            "morn": 13.91
+        },
+        "pressure": 1021.32,
+        "humidity": 62,
+        "weather": [{
+            "id": 800,
+            "main": "Clear",
+            "description": "sky is clear",
+            "icon": "02d"
+        }],
+        "speed": 1.51,
+        "deg": 24,
+        "clouds": 8
+    }, {
+        "dt": 1527501600,
+        "temp": {
+            "day": 22.25,
+            "min": 12.23,
+            "max": 22.25,
+            "night": 12.23,
+            "eve": 18.48,
+            "morn": 16.45
+        },
+        "pressure": 1016.87,
+        "humidity": 0,
+        "weather": [{
+            "id": 500,
+            "main": "Rain",
+            "description": "light rain",
+            "icon": "10d"
+        }],
+        "speed": 7.09,
+        "deg": 7,
+        "clouds": 7,
+        "rain": 0.25
+    }]
+}

@@ -9,6 +9,7 @@ html, body {
 
 #map {
     height: 100vh;
+    /* top: 30vh; */
     background-color: grey;
 }
 
@@ -18,7 +19,26 @@ html, body {
     font-size: 15px;
     font-weight: 300;
     padding: 10px;
-    text-overflow: ellipsis;
     text-align: center;
     width: 400px;
+}
+
+.info-day {
+    padding: 10px;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+#weather-title {
+    text-align: center;
+    font-size: 25px;
+    padding: 10px;
+}
+
+#weather-days {
+    margin: 0 auto;
+}
+
+.gm-style-iw {
+    text-align: center;
 }
