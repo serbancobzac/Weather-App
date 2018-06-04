@@ -42,25 +42,72 @@ function initMap() {
 		map.data.addListener("click", function (event) {
 			var info = `<div id="weather-title">${place.formatted_address}</div><div id="weather-days">`;
 			for (let i = 0; i < event.feature.f.days; i += 1) {
-				info = info + 	`<div class="info-day">
+				info = info + 	`<div class="info-days" id="info-day-${i}">
 								<img src="http://openweathermap.org/img/w/${event.feature.f.data[i].weather[0].icon}.png">
 								<br /><strong> ${dateConverter(event.feature.f.data[i].dt)} </strong>
 								<br /> ${Math.round(event.feature.f.data[i].temp.day)} &deg;C
 								<br /> ${event.feature.f.data[i].weather[0].description}</div>`;
+
+				infowindow.setOptions({
+					position: {
+						lat: event.feature.f.lat,
+						lng: event.feature.f.lng
+					}
+				});
+				
+				$("#map").after(
+					`<div class="modal" id="modal-${i}">
+						<div class="modal-content">
+							<div class="modal-header">
+								<span class="close-modal">&times;</span>
+								<h2>${place.formatted_address} - ${dateConverter(event.feature.f.data[i].dt)}</h2>
+							</div>
+							<div class="modal-body">
+								<img src="http://openweathermap.org/img/w/${event.feature.f.data[i].weather[0].icon}.png">
+								<p>Average temperature: ${Math.round(event.feature.f.data[i].temp.day)} &deg;C</p>
+								<p>Description: ${event.feature.f.data[i].weather[0].description}</p><br>
+								<p>Minimum temperature: ${Math.round(event.feature.f.data[i].temp.min)} &deg;C</p>
+								<p>Maximum temperature: ${Math.round(event.feature.f.data[i].temp.max)} &deg;C</p><br>
+								<p>Morning temperature: ${Math.round(event.feature.f.data[i].temp.morn)} &deg;C</p>
+								<p>Eve temperature: ${Math.round(event.feature.f.data[i].temp.eve)} &deg;C</p>
+								<p>Night temperature: ${Math.round(event.feature.f.data[i].temp.night)} &deg;C</p><br>
+								<p>Pressure: ${Math.round(event.feature.f.data[i].pressure)}</p>
+								<p>Humidity: ${Math.round(event.feature.f.data[i].humidity)} %</p>
+								<p>Wind speed: ${event.feature.f.data[i].speed} m/s</p>
+								<p>Cloudiness: ${event.feature.f.data[i].clouds} %</p>
+							</div>
+						</div>
+					</div>`
+				);
+
+				$(document).mouseup(function(e) {
+					var container = $(`#modal-${i} .modal-content`);
+	
+					console.log(container);
+					console.log(e.target);
+					if (!container.is(e.target) && container.has(e.target).length === 0) {
+						container.parent().hide();
+					}
+				});
 			}
 			info = info + `</div>`;
 			infowindow.setContent(info);
 			infowindow.setOptions({
-				position: {
-					lat: map.getCenter().lat(),
-					lng: map.getCenter().lng()
-				},
 				pixelOffset: {
 					width: 0,
 					height: -50
 				}
 			});
 			infowindow.open(map);
+
+			for (let i = 0; i < event.feature.f.days; i += 1) {
+				$(`#info-day-${i}`).on("click", function(){
+					$(`#modal-${i}`).toggle();
+				});
+			}
+			$(".close-modal").on("click", function(){
+				$(this).parent().parent().parent().toggle();
+			});
 		});
 	});
 }
@@ -79,7 +126,7 @@ function getWeather(locLat, locLon) {
 var proccessResults = function() {
 	resetData();
 	map.data.addGeoJson(jsonToGeoJson(JSON.parse(this.responseText)));
-}
+};
 
 function jsonToGeoJson(weatherItem) {
 	var feature = {
@@ -87,7 +134,9 @@ function jsonToGeoJson(weatherItem) {
 		properties: {
 			city: weatherItem.city.name,
 			days: weatherItem.cnt,
-			data: weatherItem.list
+			data: weatherItem.list,
+			lng: map.getCenter().lng(),
+			lat: map.getCenter().lat()
 		},
 		geometry: {
 		  type: "Point",
